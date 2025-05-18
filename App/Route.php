@@ -32,7 +32,25 @@ class Route extends bootstrap
       'action' => 'listaResultado'
 
     );
-     
+     $routes['listaUser'] = array(
+      'route' => '/buscaUser',
+      'Controller' => 'IndexControllers',
+      'action' => 'buscauser'
+
+    );
+      $routes['editarUser'] = array(
+      'route' => '/PushUser',
+      'Controller' => 'IndexControllers',
+      'action' => 'editeUser'
+
+    );
+    $routes['deletarUser'] = array(
+      'route' => '/deletarUser',
+      'Controller' => 'IndexControllers',
+      'action' => 'deletarUser'
+
+    );
+    
       $this->setRoutes($routes);
   }
 

@@ -1,11 +1,3 @@
-
-export function teste(){
-
-    
-return  'acessei a pagina';
-
-}
-
 function validarCampo(campo, nomeCampo) {
     if (campo == '' || campo == null) {
         return `Campo ${nomeCampo} não pode ser vazio.`;
@@ -33,8 +25,13 @@ export function validacampos (name,email,telefone){
 }
 export function mascaraEmail(email){
 
-    const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
-    return regex.test(email);
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if(regex.test(email)){
+        return true;
+    }else{
+        return false;
+    }
+
 
 }
 

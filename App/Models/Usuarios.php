@@ -53,19 +53,14 @@ class Usuarios extends Model
     public function validarCadastro()
     {
 
-         
-          $valido = true;
-        if (null !== $this->__get('InputName')) {
-            $valido  = false;
-        }
-          if (null !== $this->__get('InputEmail')) {
-            $valido  = false;
-        }
-          if (null !==  $this->__get('InputTel')) {
-            $valido  = false;
-        }
-          print_r($valido);
-          
+
+
+        $valido = empty($this->__get('InputName'))
+            || empty($this->__get('InputEmail'))
+            || empty($this->__get('InputTel'));
+
+
+
         return $valido;
     }
 
@@ -78,26 +73,99 @@ class Usuarios extends Model
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $retornoQuery = $stmt->get_result();
-     
-         return $retornoQuery->num_rows;
 
+        return $retornoQuery->num_rows;
     }
 
     function allUser()
     {
-        $query = "SELECT nome, email FROM usuarios";
+        $query = "SELECT id, nome, email , telefone , data_nascimento, date_criado FROM usuarios ORDER BY date_criado DESC";
         $stmt = $this->mysqli->prepare($query);
         $stmt->execute();
         $retornoQuery = $stmt->get_result();
 
 
 
-      while($result = $retornoQuery->fetch_all())
-		{	
-		      
-            
+        while ($result = $retornoQuery->fetch_all()) {
+
+
             return $result;
         }
+    }
 
+    public function getUserid()
+    {
+
+        $id = $this->__get('inputId');
+        $query = "SELECT id, nome, email,telefone, data_nascimento, date_criado FROM usuarios WHERE id = ?";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param('s', $id);
+        $stmt->execute();
+        $retornoQuery = $stmt->get_result();
+
+        while ($result = $retornoQuery->fetch_all()) {
+
+            return $result;
+        }
+    }
+
+    public function getUpdate($dados)
+    {
+
+        $nome = $dados->InputName;
+        $email = $dados->InputEmail;
+        $telefone = $dados->InputTel;
+        $date = $dados->InputDate;
+        $id = $dados->id;
+        $date_editado = date('Y-m-d H:i:s');
+
+        $query = "UPDATE usuarios SET 
+            nome = ?, 
+            email = ?, 
+            telefone = ?, 
+            data_nascimento = ?, 
+            data_edit = ?  
+          WHERE id = ?";
+
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param('sssssi', $nome, $email, $telefone, $date, $date_editado, $id); // 'i' para ID (número inteiro)
+        $stmt->execute();
+
+
+        return $retornoQuery = $stmt->affected_rows;
+    }
+
+    public function getEmail($dados) {
+        
+        $email = $dados->InputEmail;
+        $query = "SELECT nome, email FROM usuarios WHERE email = ?";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $retornoQuery = $stmt->get_result();
+
+        
+
+        return $retornoQuery->num_rows;
+    }
+
+    public function getDell ($dados)
+    {        
+        $query = "DELETE FROM usuarios WHERE id = ?";
+        $stmt = $this->mysqli->prepare($query);
+        $stmt->bind_param('s', $dados);
+        $stmt->execute();
+
+        $retornoQuery = $stmt->affected_rows;
+        return $retornoQuery;
+
+    }
+
+    public function validaCampo($id)
+    {
+         $valido = empty($id);
+
+
+        return $valido;
     }
 }

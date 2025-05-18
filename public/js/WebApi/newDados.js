@@ -1,5 +1,5 @@
 import {
-    teste,
+
     validacampos,
     mascaraEmail,
     formatarTelefone,
@@ -23,21 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // limpar()
     //puxo os dados para se carregado no dom
     pushStorage();
-    document.getElementById("InputTel").addEventListener("input", function () {
-
-        let resultMask = formatarTelefone(this);
-
-        const divTel = document.getElementById("erroTel");
-        if (!resultMask) {
-            divTel.innerHTML = 'Verifique o Telefone informado';
-
-        } else {
-
-            divTel.innerHTML = ""
-        }
-
-    });
+    
 });
+
 
 
 
@@ -64,13 +52,14 @@ function submiTBootom() {
 
     saveStorage($('#InputName').val(), $('#InputEmail').val(), $('#InputTel').val(), $('#InputDate').val());
 
-
-    const erroEmail = mascaraEmail(email);
-    const divErroMail = document.getElementById("erroEmail");
-    if (!erroEmail) {
-        divErroMail.innerHTML = 'Verifique o endereço informado';
-        throw new Error("E-mail inválido!");
-    }
+    // const erroEmail = mascaraEmail(email);
+    //   console.log(erroEmail);
+  
+    // const divErroMail = document.getElementById("erroEmail");
+    // if (!erroEmail) {
+    //     divErroMail.innerHTML = 'Verifique o endereço informado';
+    //     throw new Error("E-mail inválido!");
+    // }
 
     const erros = validacampos(name, email, telefone);
     const divErro = document.getElementById("erros");
@@ -83,3 +72,15 @@ function submiTBootom() {
     }
 
 }
+
+document.getElementById("InputEmail").addEventListener("input", function () {
+    const divErroMail = document.getElementById("erroEmail");
+
+    if (!mascaraEmail(this.value)) {
+        divErroMail.innerHTML = 'Verifique o endereço informado';
+        this.classList.add("is-invalid");
+    } else {
+        divErroMail.innerHTML = "";
+        this.classList.remove("is-invalid");
+    }
+});
