@@ -1,0 +1,19 @@
+{
+    "name": "manageasy/app",
+    "require": {
+        "php": ">= 8.2"
+    },
+    "authors": [
+        {
+  "name": "Anderson Oliveira",
+  "email": "anderson.deolliveira@hotmail.com"
+    }
+            ],
+            "autoload": {
+                "psr-4": {
+                    "App\\": "App/",
+                    "MF\\": "vendor/MF/"
+                }
+            }
+
+}

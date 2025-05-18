@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.nav-easy{
+   
+    background: linear-gradient(83deg, black 40%, blue 100%);
+ 
+}
+.nav-color{
+      color: azure !important;
+    
+}
+
+.center{
+
+    padding-top: 50px;
+}
+.divErro{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 2px;
+    font-size: 20px;
+}

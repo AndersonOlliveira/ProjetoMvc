@@ -1,0 +1,62 @@
+
+
+
+<!DOCTYPE html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+     <link rel='stylesheet' type='text/css' href="bootstrapCss/bootstrap.min.css">
+ 
+    <link rel='stylesheet' type='text/css' href="css/style.css ">
+    
+   
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg nav-easy">
+  <div class="container-fluid">
+    
+   <i class="bi bi-house-lock"> <a class="navbar-brand nav-color" href="<?php echo $this->dados[0] ?>">Home</i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active nav-color" aria-current="page" href="<?php echo $this->view->dados[1] ?>">Listar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-color"  href="">Listar</a>
+        </li>
+       
+    </div>
+  </div>
+</nav>
+
+<body>
+   <!-- redeniza o que vem da das outras paginas dinamicas -->
+    <?php
+     $this->content();
+    ?>
+</body>
+
+
+
+<script type="text/javascript" src="js/jquery/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="bootstrapjs/popper.min.js"></script>
+<script type="text/javascript" src="bootstrapjs/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bootstrapjs/bootstrap.min.js"></script>
+
+
+<div class="container">
+    <div class="center">
+<footer>
+ <p>Todos os Direitos Reservados</p>
+</footer>
+
+</div>
+</div>
+</body>
+
+</html>
