@@ -265,9 +265,9 @@ function deletarUsuario(valor){
 
 }
 
-
+//aqui e para o search
 const busca = document.getElementById('searchInput');
-
+//pego o corpo da da minha tabela criada
 const tabela = document.getElementById('corpoTabela');
 
 busca.addEventListener('keyup', ()=>{
@@ -279,8 +279,7 @@ busca.addEventListener('keyup', ()=>{
     }
    
     let linhas =  tabela.getElementsByTagName('tr');
-    // console.log(linhas);
-    
+  
      for(let possicao in linhas){
 
         if(true == isNaN(possicao)){
@@ -288,8 +287,7 @@ busca.addEventListener('keyup', ()=>{
         }
 
         let conteudoLinha = linhas[possicao].innerHTML.toLowerCase();
-
-        console.log(conteudoLinha);
+        
         if(true === conteudoLinha.includes(expressao)){
 
              linhas[possicao].style.display = '';
