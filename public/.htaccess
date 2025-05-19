@@ -1,5 +1,4 @@
-
-
+# para o uso de url amigavel
     # Send Requests To Front Controller...
     RewriteEngine oN
     RewriteCond %{REQUEST_FILENAME} !-d

@@ -48,7 +48,7 @@ export function formatarTelefone(campo) {
 }
 
 export function saveStorage(name,email,telefone){
-    console.log(name);
+   
     localStorage.setItem('nome', name); 
     localStorage.setItem('email', email);
     localStorage.setItem('telefone', telefone);

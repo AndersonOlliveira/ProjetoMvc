@@ -1,37 +1,26 @@
-<?php 
+<?php
 
 namespace App;
 
-
-use Exception;
 use mysqli;
 
 class Connection
 {
 
-    
-    public static function getdb(){
 
-        try{
-
-              $mysql = new \mysqli("localhost",'usermanageasy', '', 'manageasy');
-              $mysql->set_charset('utf8');
-
-              if($mysql->connect_errno){
-                 echo " teve erro " . $mysql->connect_error;
-
-              }
-
-              return $mysql;
-
-             
-
-        }catch (\Exception $e){
-
-            //  print_r($e);
-           return $e;
+    public static function getdb()
+    {
+          try {
+            //Gerenciar a exibição de informações
+             mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+            $mysql = new \mysqli("localhost", 'usermanageasy', '', 'manageasy');
+            $mysql->set_charset('utf8');
+         
+               return $mysql;
+       
+         } catch (\mysqli_sql_exception  $e) {
+            
+             die('Falha de conexão: Entre em contato com o Administrador do Sistema');
         }
-
     }
 }
-?>

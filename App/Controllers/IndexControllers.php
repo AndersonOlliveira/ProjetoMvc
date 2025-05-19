@@ -40,6 +40,7 @@ class IndexControllers extends Action
 
         $result = $dadosUsers->allUser();
         if (!empty($result)) {
+            //retorno um json para a api
             header('Content-Type: application/json');
             echo json_encode([
                 'Status' => 2,
@@ -57,6 +58,7 @@ class IndexControllers extends Action
             exit;
         }
     }
+
     //receber os dados do formulario
 
     public function registrar()
@@ -122,7 +124,7 @@ class IndexControllers extends Action
         if (!empty($procurarUser)) {
             header('Content-Type: application/json');
             echo json_encode([
-                // JSON_PRETTY_PRINT,
+
                 'Status' => 2,
                 'data' => $procurarUser,
                 'message' => 'Sucesso ao Consultar'
@@ -131,7 +133,7 @@ class IndexControllers extends Action
         } else {
             header('Content-Type: application/json');
             echo json_encode([
-                // JSON_PRETTY_PRINT,
+
                 'Status' => 1,
                 'message' => 'Sem dados para ser Apresentado',
                 'data' => []
@@ -202,7 +204,7 @@ class IndexControllers extends Action
         if ($verifcar) {
             header('Content-Type: application/json');
             echo json_encode([
-                // JSON_PRETTY_PRINT,
+
                 'Status' => 1,
                 'message' => 'Precisa Selecionar Id'
             ]);
@@ -216,18 +218,20 @@ class IndexControllers extends Action
         $deletar = $delUser->getDell($id);
         $gerarLogs->registarDelete($id);
         ob_clean();
+        // limpa conteúdo do buffer de saída ativo.
         if ($deletar > 0) {
             header('Content-Type: application/json');
+            //retorno um json para a api
             echo json_encode([
-                // JSON_PRETTY_PRINT,
                 'Status' => 2,
                 'message' => 'Sucesso ao Deletar o Usuário'
             ]);
             exit;
         } else {
             header('Content-Type: application/json');
+            //retorno um json para a api
             echo json_encode([
-                // JSON_PRETTY_PRINT,
+
                 'Status' => 1,
                 'message' => 'Falha ao deletar Usuário',
                 'data' => []

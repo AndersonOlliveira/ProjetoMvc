@@ -8,7 +8,7 @@ abstract class  bootstrap
  private $routes;
 
  abstract protected function initRoutes();
-
+ //para iniciar e verificar se as rotas existem
   public function __construct()
   {
     $this->initRoutes();

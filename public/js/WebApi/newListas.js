@@ -225,8 +225,6 @@ function editForm() {
      
           deletarUsuario(valor);
         
-    }else{
-
     }
 
 
@@ -247,9 +245,9 @@ function deletarUsuario(valor){
 
             if (response.Status == 2) {
 
-                alert(response.message);
-
-                setTimeout(() => {}, 100);
+                setTimeout(() => { alert(response.message)
+                     window.location.reload();
+                    ;}, 100);
 
             } else {
 

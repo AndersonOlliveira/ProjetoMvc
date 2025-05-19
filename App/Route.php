@@ -7,6 +7,7 @@ class Route extends bootstrap
 {
    protected function initRoutes()
   {
+    //classe com a definação das rotas para redenreizar a e trazer dados
     $routes['home'] = array(
       'route' => '/',
       'Controller' => 'IndexControllers',
@@ -50,8 +51,8 @@ class Route extends bootstrap
       'action' => 'deletarUser'
 
     );
-    
-      $this->setRoutes($routes);
+     
+       $this->setRoutes($routes);
   }
 
 
